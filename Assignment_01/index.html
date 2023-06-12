@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Js Knight Rider's Theme</title>
+
+    <style>
+
+        #sectionArea{
+            height: 5vh;
+            width: 60vw;
+            display: flex;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            gap: 10px;
+        }
+
+        .divBox{
+            width: 10vw;
+            border: 2px solid black;
+        }
+
+        #divButton{
+            width: 100vw;
+            height: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 35vh;
+        }
+
+        #btnStart{
+            position: relative;
+            right: 20px;
+            width: 80px;
+            height: 30px;
+        }
+
+        #btnStop{
+            width: 80px;
+            height: 30px;
+        }
+
+    </style>
+
+</head>
+<body bgcolor="black">
+<section id="sectionArea">
+    <div class="divBox" style="background-color: white"></div>
+    <div class="divBox" style="background-color: whitesmoke"></div>
+    <div class="divBox" style="background-color: pink"></div>
+    <div class="divBox" style="background-color: red"></div>
+    <div class="divBox" style="background-color: pink"></div>
+    <div class="divBox" style="background-color: whitesmoke"></div>
+    <div class="divBox" style="background-color: white"></div>
+</section>
+
+<div id="divButton">
+    <button id="btnStart" style="background-color: green">Start</button>
+    <button id="btnStop" style="background-color: red">Stop</button>
+</div>
+
+<audio id="knighRiderAudio" src=../assets/audio/Knight%20Rider%20Sms%20!%20Knight%20Rider%20!%20Theme.mp3></audio>
+
+<script src="../assets/jQuery/jquery-3.6.4.min.js"></script>
+
+<script>
+
+    function animateColors() {
+        let colour1 = $("section>div:nth-child(1)").css('background-color');
+        let colour2 = $("section>div:nth-child(2)").css('background-color');
+        let colour3 = $("section>div:nth-child(3)").css('background-color');
+        let colour4 = $("section>div:nth-child(4)").css('background-color');
+        let colour5 = $("section>div:nth-child(5)").css('background-color');
+        let colour6 = $("section>div:nth-child(6)").css('background-color');
+        let colour7 = $("section>div:nth-child(7)").css('background-color');
+
+        $("section>div:nth-child(2)").css('background-color',colour1);
+        $("section>div:nth-child(3)").css('background-color',colour2);
+        $("section>div:nth-child(4)").css('background-color',colour3);
+        $("section>div:nth-child(5)").css('background-color',colour4);
+        $("section>div:nth-child(6)").css('background-color',colour5);
+        $("section>div:nth-child(7)").css('background-color',colour6);
+        $("section>div:nth-child(1)").css('background-color',colour7);
+    }
+
+    let timerId
+    $("#btnStart").click(function () {
+        $('#knighRiderAudio')[0].play();
+        clearInterval(timerId);
+        timerId =   setInterval(animateColors,150);
+    });
+
+    $("#btnStop").click(function () {
+        $('#knighRiderAudio')[0].pause();
+        clearInterval(timerId);
+    });
+
+</script>
+</body>
+</html>
